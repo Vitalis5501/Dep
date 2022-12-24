@@ -1,0 +1,25 @@
+
+# Default values for staging.
+# This is a YAML-formatted file.
+
+
+replicaCount: 1
+image: mysql:5.6
+dbname: mysql
+dbport: 3306
+mpoint: /var/lib/mysql
+wordpressimage: wordpress:4.8-apache
+servername: wordpress
+serverport: 80
+    
+
+serversvcport: 80
+
+env:
+  name: WORDPRESS_DB_HOST
+  value: wordpress-mysql
+  namep: WORDPRESS_DB_PASSWORD
+  valuep: ROOT
+DBname: mysql-pv-claim
+Modes: ReadWriteOnce
+wname: wp-pv-claim

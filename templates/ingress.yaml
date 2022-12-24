@@ -1,0 +1,31 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+   name: ingress-svc
+   annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+   #namespace: ingress-nginx
+spec:
+  rules:
+  - host: avitrace
+    http:
+     paths:
+      - path: /wcash
+        pathType: Prefix
+        backend:
+          service:
+            name: {{.Values.servername}}
+            port:
+             number: {{.Values.serverport}}
+  
+      - path: /db-server
+        pathType: Prefix
+        backend:
+          service:
+            name: wordpress-mysql
+            port:
+             number: {{.Values.dbport}}
+ 
+      
+ 
